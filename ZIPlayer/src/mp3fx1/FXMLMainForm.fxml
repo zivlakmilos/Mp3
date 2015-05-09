@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mp3fx1.FXMLMainFormController">
+   <children>
+      <Button fx:id="btnPlay" layoutX="14.0" layoutY="244.0" mnemonicParsing="false" onAction="#playOnClick" text="Play" />
+      <Button fx:id="btnStop" layoutX="75.0" layoutY="244.0" mnemonicParsing="false" onAction="#stopOnClick" text="Stop" />
+      <Button fx:id="btnOpen" layoutX="136.0" layoutY="244.0" mnemonicParsing="false" onAction="#openOnClick" text="..." />
+      <Canvas fx:id="vumeter" height="200.0" layoutX="14.0" layoutY="14.0" width="122.0" />
+      <Slider fx:id="e32" layoutX="160.0" layoutY="44.0" orientation="VERTICAL" />
+      <Slider fx:id="e64" layoutX="173.0" layoutY="44.0" orientation="VERTICAL" />
+      <Slider fx:id="e125" layoutX="186.0" layoutY="44.0" orientation="VERTICAL" />
+      <Slider fx:id="e250" layoutX="199.0" layoutY="44.0" orientation="VERTICAL" />
+      <Slider fx:id="e4000" layoutX="251.0" layoutY="44.0" orientation="VERTICAL" />
+      <Slider fx:id="e2000" layoutX="238.0" layoutY="44.0" orientation="VERTICAL" />
+      <Slider fx:id="e1000" layoutX="225.0" layoutY="44.0" orientation="VERTICAL" />
+      <Slider fx:id="e500" layoutX="212.0" layoutY="44.0" orientation="VERTICAL" />
+      <Slider fx:id="e8000" layoutX="264.0" layoutY="44.0" orientation="VERTICAL" />
+      <Slider fx:id="e16000" layoutX="277.0" layoutY="44.0" orientation="VERTICAL" />
+   </children>
+</Pane>
