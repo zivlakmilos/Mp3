@@ -1,4 +1,4 @@
-package mp3fx1;
+package ZIPlayer;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -95,7 +95,7 @@ public class FXMLMainFormController implements Initializable
                         {
                             ObservableList<EqualizerBand> bands =
                                     mediaPlayer.getAudioEqualizer().getBands();
-                            bands.set(0, new EqualizerBand
+                            bands.set(1, new EqualizerBand
                                 (64, 39, new_val.doubleValue()));
                         }
                     }
@@ -110,7 +110,7 @@ public class FXMLMainFormController implements Initializable
                         {
                             ObservableList<EqualizerBand> bands =
                                     mediaPlayer.getAudioEqualizer().getBands();
-                            bands.set(0, new EqualizerBand
+                            bands.set(2, new EqualizerBand
                                 (125, 78, new_val.doubleValue()));
                         }
                     }
@@ -125,7 +125,7 @@ public class FXMLMainFormController implements Initializable
                         {
                             ObservableList<EqualizerBand> bands =
                                     mediaPlayer.getAudioEqualizer().getBands();
-                            bands.set(0, new EqualizerBand
+                            bands.set(3, new EqualizerBand
                                 (250, 156, new_val.doubleValue()));
                         }
                     }
@@ -140,7 +140,7 @@ public class FXMLMainFormController implements Initializable
                         {
                             ObservableList<EqualizerBand> bands =
                                     mediaPlayer.getAudioEqualizer().getBands();
-                            bands.set(0, new EqualizerBand
+                            bands.set(4, new EqualizerBand
                                 (500, 312, new_val.doubleValue()));
                         }
                     }
@@ -155,7 +155,7 @@ public class FXMLMainFormController implements Initializable
                         {
                             ObservableList<EqualizerBand> bands =
                                     mediaPlayer.getAudioEqualizer().getBands();
-                            bands.set(0, new EqualizerBand
+                            bands.set(4, new EqualizerBand
                                 (1000, 625, new_val.doubleValue()));
                         }
                     }
@@ -170,7 +170,7 @@ public class FXMLMainFormController implements Initializable
                         {
                             ObservableList<EqualizerBand> bands =
                                     mediaPlayer.getAudioEqualizer().getBands();
-                            bands.set(0, new EqualizerBand
+                            bands.set(6, new EqualizerBand
                                 (2000, 1250, new_val.doubleValue()));
                         }
                     }
@@ -185,7 +185,7 @@ public class FXMLMainFormController implements Initializable
                         {
                             ObservableList<EqualizerBand> bands =
                                     mediaPlayer.getAudioEqualizer().getBands();
-                            bands.set(0, new EqualizerBand
+                            bands.set(7, new EqualizerBand
                                 (4000, 2500, new_val.doubleValue()));
                         }
                     }
@@ -200,7 +200,7 @@ public class FXMLMainFormController implements Initializable
                         {
                             ObservableList<EqualizerBand> bands =
                                     mediaPlayer.getAudioEqualizer().getBands();
-                            bands.set(0, new EqualizerBand
+                            bands.set(8, new EqualizerBand
                                 (8000, 5000, new_val.doubleValue()));
                         }
                     }
@@ -215,7 +215,7 @@ public class FXMLMainFormController implements Initializable
                         {
                             ObservableList<EqualizerBand> bands =
                                     mediaPlayer.getAudioEqualizer().getBands();
-                            bands.set(0, new EqualizerBand
+                            bands.set(9, new EqualizerBand
                                 (16000, 10000, new_val.doubleValue()));
                         }
                     }

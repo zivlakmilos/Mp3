@@ -1,4 +1,4 @@
-package mp3fx1;
+package ZIPlayer;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
