@@ -155,7 +155,7 @@ public class FXMLMainFormController implements Initializable
                         {
                             ObservableList<EqualizerBand> bands =
                                     mediaPlayer.getAudioEqualizer().getBands();
-                            bands.set(4, new EqualizerBand
+                            bands.set(5, new EqualizerBand
                                 (1000, 625, new_val.doubleValue()));
                         }
                     }
