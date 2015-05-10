@@ -14,6 +14,7 @@ import javafx.scene.canvas.*;
 import javafx.scene.media.*;
 import javafx.stage.FileChooser;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 /**
  *
@@ -28,6 +29,7 @@ public class FXMLMainFormController implements Initializable
     @FXML private Canvas vumeter;
     @FXML private Slider e32, e64, e125, e250, e500, e1000, e2000, e4000,
             e8000, e16000;
+    @FXML private Slider hsTime;
     
     // Global cariables
     private Media media = null;
@@ -220,6 +222,20 @@ public class FXMLMainFormController implements Initializable
                         }
                     }
                 });
+        
+        // hsTime events
+        hsTime.valueProperty().addListener(new ChangeListener<Number>()
+                {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> ov,
+                            Number old_val, Number new_val)
+                    {
+                        if((new_val.doubleValue() - old_val.doubleValue()) > 0.5)
+                        {
+                            updateTimePlayer(new_val.doubleValue());
+                        }
+                    }
+                });
     }
     
     /*
@@ -243,6 +259,7 @@ public class FXMLMainFormController implements Initializable
                         public void run()
                         {
                             drawVuMeter();
+                            updateTimeSlider(mediaPlayer.getCurrentTime().compareTo(Duration.ONE));
                         }
                     });
             }
@@ -262,6 +279,8 @@ public class FXMLMainFormController implements Initializable
         if(mediaPlayer != null)
         {
             mediaPlayer.stop();
+            updateTimePlayer(0);
+            updateTimeSlider(0);
         }
         btnPlay.setText("Play");
     }
@@ -278,6 +297,13 @@ public class FXMLMainFormController implements Initializable
         {
             media = new Media(file.toURI().toString());
             mediaPlayer = new MediaPlayer(media);
+            
+            if(mediaPlayer != null)
+            {
+                hsTime.setMin(0);
+                hsTime.setMax(mediaPlayer.getTotalDuration().toSeconds());
+                hsTime.setDisable(false);
+            }
         }
         
         /*
@@ -303,5 +329,15 @@ public class FXMLMainFormController implements Initializable
         
         gc.setStroke(Color.BLACK);
         gc.strokeRect(0, 0, 100, 100);
+    }
+    
+    private void updateTimePlayer(double seconds)
+    {
+        mediaPlayer.seek(Duration.seconds(seconds));
+    }
+    
+    private void updateTimeSlider(double seconds)
+    {
+        hsTime.setValue(seconds);
     }
 }
