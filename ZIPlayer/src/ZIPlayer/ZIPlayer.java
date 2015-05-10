@@ -12,7 +12,7 @@ import javafx.stage.Stage;
  */
 
 
-public class Mp3Fx1 extends Application
+public class ZIPlayer extends Application
 {
     @Override
     public void start(Stage stage) throws Exception

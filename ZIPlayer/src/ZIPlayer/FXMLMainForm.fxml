@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mp3fx1.FXMLMainFormController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ZIPlayer.FXMLMainFormController">
    <children>
       <Button fx:id="btnPlay" layoutX="14.0" layoutY="244.0" mnemonicParsing="false" onAction="#playOnClick" text="Play" />
       <Button fx:id="btnStop" layoutX="75.0" layoutY="244.0" mnemonicParsing="false" onAction="#stopOnClick" text="Stop" />
