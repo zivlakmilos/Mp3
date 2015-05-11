@@ -2,13 +2,13 @@
 <jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="ZIPlayer.jnlp">
   <information>
     <title>ZIPlayer</title>
-    <vendor>Milica</vendor>
+    <vendor>ZI</vendor>
     <description>null</description>
     <offline-allowed/>
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ZIPlayer.jar" size="19858" download="eager" />
+    <jar href="ZIPlayer.jar" size="19849" download="eager" />
   </resources>
 <security>
   <all-permissions/>
