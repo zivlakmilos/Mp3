@@ -1,7 +1,6 @@
 package ZIPlayer;
 
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -24,6 +23,9 @@ import javafx.util.Duration;
 
 public class FXMLMainFormController implements Initializable
 {
+    // Constants
+    private static final int NUMBER_OF_BANS = 10;
+    
     // Vidual components
     @FXML private Button btnPlay;
     @FXML private Canvas vumeter;
@@ -31,9 +33,11 @@ public class FXMLMainFormController implements Initializable
             e8000, e16000;
     @FXML private Slider hsTime;
     
-    // Global cariables
+    // Global variables
     private Media media = null;
     private MediaPlayer mediaPlayer = null;
+    
+    private float[] vuGraph;
     
     @Override
     public void initialize(URL url, ResourceBundle rb)
@@ -258,8 +262,9 @@ public class FXMLMainFormController implements Initializable
                         @Override
                         public void run()
                         {
-                            drawVuMeter();
-                            updateTimeSlider(mediaPlayer.getCurrentTime().compareTo(Duration.ONE));
+                            //drawVuMeter();
+                            //updateTimeSlider(mediaPlayer.getCurrentTime().compareTo(Duration.ONE));mediaPlayer.getCurrentTime().toSeconds();
+                            updateTimeSlider(mediaPlayer.getCurrentTime().toSeconds());
                         }
                     });
             }
@@ -303,6 +308,21 @@ public class FXMLMainFormController implements Initializable
                 hsTime.setMin(0);
                 hsTime.setMax(mediaPlayer.getTotalDuration().toSeconds());
                 hsTime.setDisable(false);
+                
+                mediaPlayer.setAudioSpectrumNumBands(10);
+                mediaPlayer.setAudioSpectrumListener(new AudioSpectrumListener()
+                    {
+                        @Override
+                        public void spectrumDataUpdate(double timestamp,
+                                double duration,
+                                float[] magnitudes,
+                                float[] phases)
+                        {
+                            //vuGraph1 = phases[0];
+                            vuGraph = magnitudes;
+                            drawVuMeter();
+                        }
+                    });
             }
         }
         
@@ -329,6 +349,17 @@ public class FXMLMainFormController implements Initializable
         
         gc.setStroke(Color.BLACK);
         gc.strokeRect(0, 0, 100, 100);
+        
+        //gc.strokeRect(0, 0, vuGraph[0] + 60, 10);
+        
+        double height = vumeter.getHeight();
+        
+        for(int i = 0; i < NUMBER_OF_BANS; i++)
+        {
+            gc.setStroke(Color.BLACK);
+            gc.strokeRect((height - (vuGraph[i] + 60)) * 2,
+                    10 * i, 10, height);
+        }
     }
     
     private void updateTimePlayer(double seconds)
