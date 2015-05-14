@@ -3,6 +3,8 @@ package ZIPlayer;
 import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -288,6 +290,7 @@ public class FXMLMainFormController implements Initializable
             updateTimeSlider(0);
         }
         btnPlay.setText("Play");
+        resetVuMeter();
     }
 
     @FXML
@@ -340,26 +343,25 @@ public class FXMLMainFormController implements Initializable
         GraphicsContext gc = vumeter.getGraphicsContext2D();
         gc.clearRect(0, 0, vumeter.getWidth(), vumeter.getHeight());
         
-        /*
-        gc.setFill(Color.BLACK);
-        gc.setStroke(Color.PINK);
-        
-        gc.stroke...;
-        */
-        
-        gc.setStroke(Color.BLACK);
-        gc.strokeRect(0, 0, 100, 100);
-        
-        //gc.strokeRect(0, 0, vuGraph[0] + 60, 10);
-        
         double height = vumeter.getHeight();
-        
+                
         for(int i = 0; i < NUMBER_OF_BANS; i++)
         {
-            gc.setStroke(Color.BLACK);
-            gc.strokeRect((height - (vuGraph[i] + 60)) * 2,
-                    10 * i, 10, height);
+            gc.setFill(Color.RED);
+            gc.fillRect((i * 10) + 5, height - ((vuGraph[i] + 60) * 2),
+                    10, height);
         }
+    }
+    
+    private void resetVuMeter()
+    {
+        try
+        {
+            Thread.sleep(10);
+        } catch (InterruptedException ex){}
+        
+        GraphicsContext gc = vumeter.getGraphicsContext2D();
+        gc.clearRect(0, 0, vumeter.getWidth(), vumeter.getHeight());
     }
     
     private void updateTimePlayer(double seconds)
