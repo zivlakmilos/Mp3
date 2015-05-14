@@ -15,6 +15,9 @@ import javafx.scene.canvas.*;
 import javafx.scene.media.*;
 import javafx.stage.FileChooser;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
 import javafx.util.Duration;
 
 /**
@@ -40,6 +43,7 @@ public class FXMLMainFormController implements Initializable
     private MediaPlayer mediaPlayer = null;
     
     private float[] vuGraph;
+    private LinearGradient linearGradient;
     
     @Override
     public void initialize(URL url, ResourceBundle rb)
@@ -242,6 +246,15 @@ public class FXMLMainFormController implements Initializable
                         }
                     }
                 });
+        
+        // Initialize linear gradient
+        Stop[] stops = new Stop[]
+            {
+                new Stop(0, Color.RED),
+                new Stop(1, Color.GREEN)
+            };
+        linearGradient = new LinearGradient(0, 1, 0, 0, true,
+                CycleMethod.NO_CYCLE, stops);
     }
     
     /*
@@ -344,11 +357,12 @@ public class FXMLMainFormController implements Initializable
         gc.clearRect(0, 0, vumeter.getWidth(), vumeter.getHeight());
         
         double height = vumeter.getHeight();
-                
+        
+        //gc.setFill(Color.RED);
+        gc.setFill(linearGradient);
         for(int i = 0; i < NUMBER_OF_BANS; i++)
         {
-            gc.setFill(Color.RED);
-            gc.fillRect((i * 10) + 5, height - ((vuGraph[i] + 60) * 2),
+            gc.fillRect((i * 10) + 5, height - ((vuGraph[i] + 60) * 3),
                     10, height);
         }
     }
@@ -357,8 +371,8 @@ public class FXMLMainFormController implements Initializable
     {
         try
         {
-            Thread.sleep(10);
-        } catch (InterruptedException ex){}
+            Thread.sleep(100);
+        } catch(InterruptedException ex){}
         
         GraphicsContext gc = vumeter.getGraphicsContext2D();
         gc.clearRect(0, 0, vumeter.getWidth(), vumeter.getHeight());
